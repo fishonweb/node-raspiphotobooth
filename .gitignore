@@ -1,5 +1,5 @@
 #ignore node_modules folder
 node_modules
 
-ignore pics file
+#ignore pics file
 pics/*
