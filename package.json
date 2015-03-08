@@ -26,5 +26,8 @@
     "keypress": "^0.2.1",
     "raspicam": "^0.2.13",
     "rpi-gpio": "^0.5.1"
+  },
+  "dependencies": {
+    "express": "~4.12.2"
   }
 }
