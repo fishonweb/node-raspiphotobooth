@@ -3,7 +3,9 @@ var RaspiCam = require("raspicam");
 
 var outputPath = "./pics/pic%d.jpg";
 
-var camera = new RaspiCam({ 
+var tile = require("./utils/tileimg.js")
+
+var camera = new RaspiCam({
   mode : "photo",
   width : 1024,
   height : 768,
@@ -19,12 +21,14 @@ keypress(process.stdin);
 // listen for the "keypress" event
 process.stdin.on('keypress', function (ch, key) {
   if (key && key.ctrl && key.name == 'c') {
+    console.log("goodbye !")
     process.exit();
   }
+  //Listen for enter keypress and start camera
   if(key.name == "return"){
     camera.start()
   }
-  
+
 });
 
 process.stdin.setRawMode(true);
@@ -37,4 +41,3 @@ process.stdin.resume();
 /*setTimeout(function() {
   camera.stop();
 }, 800)*/
-

@@ -28,6 +28,7 @@
     "rpi-gpio": "^0.5.1"
   },
   "dependencies": {
-    "express": "~4.12.2"
+    "express": "~4.12.2",
+    "gm": "~1.17.0"
   }
 }
