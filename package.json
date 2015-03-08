@@ -1,0 +1,30 @@
+{
+  "name": "node-photobooth",
+  "version": "1.0.0",
+  "description": "Node photobooth for rapsberry pi and raspi cam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrench13/node-photobooth.git"
+  },
+  "keywords": [
+    "node",
+    "photobooth",
+    "raspberrypi",
+    "rpi"
+  ],
+  "author": "wrench13",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrench13/node-photobooth/issues"
+  },
+  "homepage": "https://github.com/wrench13/node-photobooth",
+  "devDependencies": {
+    "keypress": "^0.2.1",
+    "raspicam": "^0.2.13",
+    "rpi-gpio": "^0.5.1"
+  }
+}
