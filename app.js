@@ -1,15 +1,8 @@
 
 var RaspiCam = require("raspicam");
 var i = 0
-var outputPath = "./pics/pic" + i + ".jpg";
 
-var options = {
-  mode : "photo",
-  width : 1024,
-  height : 768,
-  output : outputPath,
-  quality : 10
-}
+
 
 
 var keypress = require('keypress');
@@ -25,10 +18,17 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
-    i++
-    outputPath = "./pics/pic" + i + ".jpg";
+    var outputPath = "./pics/pic" + i + ".jpg";
+    var options = {
+      mode : "photo",
+      width : 1024,
+      height : 768,
+      output : outputPath,
+      quality : 10
+    }
     var camera = new RaspiCam(options);
     camera.start()
+    i++
   }
 
 });
