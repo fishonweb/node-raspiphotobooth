@@ -26,13 +26,19 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
+    i++
+    outputPath = "./pics/pic" + i + ".jpg"
     camera.start()
   }
 
 });
 
+
+
 process.stdin.setRawMode(true);
 process.stdin.resume();
+
+tile()
 
 //to take a snapshot, start a timelapse or video recording
 //camera.start( );
