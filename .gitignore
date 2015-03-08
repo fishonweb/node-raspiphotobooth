@@ -26,3 +26,8 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# pics files
+pics/*.jpg
+pics/*.png
+pics/*.bmp
