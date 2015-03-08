@@ -26,6 +26,7 @@ process.stdin.on('keypress', function (ch, key) {
   //Listen for enter keypress and start camera
   if(key.name == "return"){
     i++
+    outputPath = "./pics/pic" + i + ".jpg";
     camera.start()
   }
 
