@@ -3,7 +3,6 @@ var RaspiCam = require("raspicam");
 
 var outputPath = "./pics/pic%d.jpg";
 
-var tile = require("./utils/tileimg.js")
 
 var camera = new RaspiCam({
   mode : "photo",
