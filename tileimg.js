@@ -23,4 +23,6 @@ function tile() {
   });
 }
 
+tile()
+
 module.exports = tile()
