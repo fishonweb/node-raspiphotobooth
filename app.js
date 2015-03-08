@@ -38,7 +38,7 @@ process.stdin.on('keypress', function (ch, key) {
 process.stdin.setRawMode(true);
 process.stdin.resume();
 
-tile()
+
 
 //to take a snapshot, start a timelapse or video recording
 //camera.start( );
