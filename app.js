@@ -1,7 +1,7 @@
 
 var RaspiCam = require("raspicam");
-
-var outputPath = "./pics/pic%d.jpg";
+var i = 0
+var outputPath = "./pics/pic" + i + ".jpg";
 
 
 var camera = new RaspiCam({
@@ -26,7 +26,6 @@ process.stdin.on('keypress', function (ch, key) {
   //Listen for enter keypress and start camera
   if(key.name == "return"){
     i++
-    outputPath = "./pics/pic" + i + ".jpg"
     camera.start()
   }
 

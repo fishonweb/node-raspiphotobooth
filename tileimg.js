@@ -1,5 +1,5 @@
 var gm = require("gm")
-var dir = __dirname + "/pics"
+var dir = "./pics"
 
 function tile() {
   // a b  ->  a
@@ -12,17 +12,16 @@ function tile() {
   //     if (err) console.log(err);
   //   });
 
-  gm(dir + "/pic0.jpg")
-  .append(dir + "/pic1.jpg")
-  .append()
-  .background('#222')
-  .write(dir + "/append.jpg", function (err) {
-    if (err) return console.dir(arguments)
-    console.log(this.outname + " created  ::  " + arguments[3])
-    require('child_process').exec('open ' + dir + "/append.jpg")
-  });
+gm()
+  .in('-page', '+0+0')  // Custom place for each of the images
+  .in(dir + "/pic0.jpg")
+  .in('-page', '+0+780')
+  .in(dir + "/pic1.jpg")
+  .mosaic()  // Merges the images as a matrix
+  .write(dir  + '/output.jpg', function (err) {
+    if (err) console.log(err);
+      console.log(this.outname + " created  ::  " + arguments[3])
+  })
 }
 
 tile()
-
-module.exports = tile()
