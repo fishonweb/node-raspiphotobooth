@@ -1,6 +1,6 @@
 
 var RaspiCam = require("raspicam");
-var i = 0
+var count = 0
 
 
 
@@ -18,7 +18,7 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
-    var outputPath = "./pics/pic" + i + ".jpg";
+    var outputPath = "./pics/pic" + count + ".jpg";
     var options = {
       mode : "photo",
       width : 1024,
@@ -28,11 +28,15 @@ process.stdin.on('keypress', function (ch, key) {
     }
     var camera = new RaspiCam(options);
     camera.start()
-    i++
+
   }
 
 });
 
+//listen for the process to exit when the timeout has been reached
+camera.on("exit", function(){
+  count++
+});
 
 
 process.stdin.setRawMode(true);
