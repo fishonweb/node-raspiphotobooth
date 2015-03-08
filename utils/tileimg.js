@@ -1,5 +1,5 @@
 var gm = require("gm")
-var dir = _dirname + "/pics"
+var dir = __dirname + "/pics"
 
 function tile() {
   // a b  ->  a
