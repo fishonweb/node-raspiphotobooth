@@ -28,7 +28,7 @@ process.stdin.on('keypress', function (ch, key) {
     }
     var camera = new RaspiCam(options);
     camera.start()
-
+    return camera
   }
 
 });
