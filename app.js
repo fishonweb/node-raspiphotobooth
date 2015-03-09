@@ -3,13 +3,21 @@ var RaspiCam = require("raspicam");
 var count = 0
 
 
-
+var outputPath = "./pics/pic" + count + ".jpg";
+var options = {
+  mode : "photo",
+  width : 1024,
+  height : 768,
+  output : outputPath,
+  quality : 10
+}
 
 var keypress = require('keypress');
 
 // make `process.stdin` begin emitting "keypress" events
 keypress(process.stdin);
 
+var camera = new RaspiCam(options);
 // listen for the "keypress" event
 process.stdin.on('keypress', function (ch, key) {
   if (key && key.ctrl && key.name == 'c') {
@@ -18,15 +26,8 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
-    var outputPath = "./pics/pic" + count + ".jpg";
-    var options = {
-      mode : "photo",
-      width : 1024,
-      height : 768,
-      output : outputPath,
-      quality : 10
-    }
-    var camera = new RaspiCam(options);
+
+    camera = new RaspiCam(options);
     camera.start()
     return camera
   }
