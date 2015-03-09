@@ -26,7 +26,13 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
-
+    var options = {
+      mode : "photo",
+      width : 1024,
+      height : 768,
+      output : outputPath,
+      quality : 10
+    }
     camera = new RaspiCam(options);
     camera.start()
     return camera
