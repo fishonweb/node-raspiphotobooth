@@ -26,16 +26,8 @@ process.stdin.on('keypress', function (ch, key) {
   //Listen for enter keypress and start camera
   if(key.name == "return"){
     outputPath = "./pics/pic" + count + ".jpg";
-    var options = {
-      mode : "photo",
-      width : 1024,
-      height : 768,
-      output : outputPath,
-      quality : 10
-    }
-    camera = RaspiCam(options);
+    camera.set("output", outputPath);
     camera.start()
-    return camera
   }
 
 });
