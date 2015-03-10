@@ -1,5 +1,5 @@
 var RaspiCam = require("raspicam");
-var tile = require(".tileimg.js")
+var tile = require("./utils/tileimg.js")
 
 function zeroFill(i) {
   return (i < 10 ? '0' : '') + i
