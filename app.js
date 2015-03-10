@@ -59,7 +59,7 @@ process.stdin.on('keypress', function (ch, key) {
 //listen for the process to exit when the timeout has been reached
 camera.on("exit", function(){
   console.log(count)
-  if(count < 2){
+  if(count <= 2){
     count++
     takePic(count)
   } else {
