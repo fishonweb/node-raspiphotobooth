@@ -31,13 +31,11 @@ var options = {
   output : outputPath,
   quality : 10
 }
-
+camera = RaspiCam(options);
 var keypress = require('keypress');
 
 // make `process.stdin` begin emitting "keypress" events
 keypress(process.stdin);
-
-var camera = new RaspiCam(options);
 // listen for the "keypress" event
 process.stdin.on('keypress', function (ch, key) {
   if (key && key.ctrl && key.name == 'c') {
@@ -54,7 +52,7 @@ process.stdin.on('keypress', function (ch, key) {
       output : outputPath,
       quality : 10
     }
-    camera = new RaspiCam(options);
+    camera = RaspiCam(options);
     camera.start()
     return camera
   }
@@ -63,6 +61,7 @@ process.stdin.on('keypress', function (ch, key) {
 
 //listen for the process to exit when the timeout has been reached
 camera.on("exit", function(){
+  console.log("camera exit")
   count++
 });
 
