@@ -37,8 +37,8 @@ function takePic(count) {
   console.log("takepic " + count)
   outputPath = path + "pic" + count + ".jpg";
   input.push("pic" + count + ".jpg")
-  camera.set("output", outputPath);
-  camera.start()
+  camera.set("output", outputPath)
+  return camera.start()
 }
 
 // make `process.stdin` begin emitting "keypress" events
@@ -64,6 +64,7 @@ camera.on("exit", function(){
     return takePic(count)
   } else {
     tile(path, input, tileOutputPath, tileOutputName)
+    count = 1
   }
 });
 
