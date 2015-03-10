@@ -3,6 +3,7 @@ var app = express()
 
 
 app.use('/pics', express.static('pics'));
+app.use('/photoboth', express.static('photobooth'));
 
 app.get('/', function (req, res) {
   res.send('<img src="./pics/pic1.jpg" />')
