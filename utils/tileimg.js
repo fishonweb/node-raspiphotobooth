@@ -11,7 +11,7 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
     .in('-page', '+0+780')
     .in(inputFolder + "/" + inputArrayImgs[1])
     .mosaic()  // Merges the images as a matrix
-    .write(outpuFolder  + "/" + outputName +".jpg", function (err) {
+    .write(outputFolder  + "/" + outputName +".jpg", function (err) {
       if (err) console.log(err);
         console.log(this.outname + " created  ::  " + arguments[3])
     })

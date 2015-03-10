@@ -33,7 +33,7 @@ var options = {
 camera = RaspiCam(options);
 var keypress = require('keypress');
 
-function takePic() {
+function takePic(count) {
   console.log("takepic " + count)
   outputPath = path + "pic" + count + ".jpg";
   input.push("pic" + count + ".jpg")
