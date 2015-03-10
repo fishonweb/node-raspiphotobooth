@@ -61,7 +61,7 @@ camera.on("exit", function(){
   //console.log(count)
   if(count < 2){
     count++
-    camera.start()
+    setTimeout(takePic(count), 100)
   } else {
     tile(path, input, tileOutputPath, tileOutputName)
     count = 1
