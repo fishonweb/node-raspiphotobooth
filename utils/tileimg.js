@@ -4,6 +4,7 @@ var gm = require("gm")
 module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName) {
   // a b  ->  a
   //          b
+  console.log("tile image")
   gm()
     .in('-page', '+0+0')  // Custom place for each of the images
     .in(inputFolder + "/" + inputArrayImgs[0])
