@@ -1,27 +1,17 @@
 var gm = require("gm")
-var dir = "./pics"
 
-function tile() {
+
+module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName) {
   // a b  ->  a
   //          b
-
-  // appends imgs from top-to-bottom
-  // gm("/pics/pic0.jpg")
-  //   .append("./pics/pic1.jpg")
-  //   .write('/pics/output2.jpg', function (err) {
-  //     if (err) console.log(err);
-  //   });
-
-gm()
-  .in('-page', '+0+0')  // Custom place for each of the images
-  .in(dir + "/pic0.jpg")
-  .in('-page', '+0+780')
-  .in(dir + "/pic1.jpg")
-  .mosaic()  // Merges the images as a matrix
-  .write(dir  + '/output.jpg', function (err) {
-    if (err) console.log(err);
-      console.log(this.outname + " created  ::  " + arguments[3])
-  })
+  gm()
+    .in('-page', '+0+0')  // Custom place for each of the images
+    .in(inputFolder + "/" + inputArrayImgs[0])
+    .in('-page', '+0+780')
+    .in(inputFolder + "/" + inputArrayImgs[1])
+    .mosaic()  // Merges the images as a matrix
+    .write(outpuFolder  + "/" + outputName +".jpg", function (err) {
+      if (err) console.log(err);
+        console.log(this.outname + " created  ::  " + arguments[3])
+    })
 }
-
-tile()

@@ -1,7 +1,25 @@
-
-
 var RaspiCam = require("raspicam");
-var count = 0
+var tile = require(".tileimg.js")
+
+function zeroFill(i) {
+  return (i < 10 ? '0' : '') + i
+}
+
+function now () {
+  var d = new Date()
+  return d.getFullYear() + '-'
+    + zeroFill(d.getMonth() + 1) + '-'
+    + zeroFill(d.getDate()) + '--'
+    + zeroFill(d.getHours()) + ':'
+    + zeroFill(d.getMinutes())
+}
+
+var count = 1
+var path = "./pics/"
+var tileOutputPath = "./photobooth/"
+var tileOutputName = "chloju" + now()
+var input = []
+
 
 
 var outputPath = "./pics/pic" + count + ".jpg";
@@ -15,6 +33,14 @@ var options = {
 camera = RaspiCam(options);
 var keypress = require('keypress');
 
+function takePic() {
+  console.log("takepic " + count)
+  outputPath = path + "pic" + count + ".jpg";
+  input.push("pic" + count + ".jpg")
+  camera.set("output", outputPath);
+  camera.start()
+}
+
 // make `process.stdin` begin emitting "keypress" events
 keypress(process.stdin);
 // listen for the "keypress" event
@@ -25,17 +51,20 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
-    outputPath = "./pics/pic" + count + ".jpg";
-    camera.set("output", outputPath);
-    camera.start()
+    takePic(count)
   }
 
 });
 
 //listen for the process to exit when the timeout has been reached
 camera.on("exit", function(){
-  console.log("camera exit")
-  count++
+  console.log(count)
+  if(count < 2){
+    count++
+    takePic(count)
+  } else {
+    tile(path, input, tileOutputPath, tileOutputName)
+  }
 });
 
 
@@ -45,7 +74,7 @@ process.stdin.resume();
 
 
 //to take a snapshot, start a timelapse or video recording
-//camera.start( );
+//camera .start( );
 
 //to stop a timelapse or video recording
 /*setTimeout(function() {
