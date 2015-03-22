@@ -28,7 +28,8 @@ var options = {
   width : 1024,
   height : 768,
   output : outputPath,
-  quality : 10
+  quality : 10,
+  fullscreen : true
 }
 camera = RaspiCam(options);
 var keypress = require('keypress');
@@ -61,7 +62,8 @@ camera.on("exit", function(){
   //console.log(count)
   if(count < 2){
     count++
-    setTimeout(takePic(count), 100)
+    camera.stop()
+    takePic(count)
   } else {
     tile(path, input, tileOutputPath, tileOutputName)
     count = 1

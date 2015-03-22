@@ -1,7 +1,7 @@
 // button is attaced to pin 17, led to 18
 var GPIO = require('onoff').Gpio,
-    led = new GPIO(19, 'out'),
-    button = new GPIO(22, 'in', 'both');
+    led = new GPIO(14, 'out'),
+    button = new GPIO(4, 'in', 'both');
 
 // define the callback function
 function light(err, state) {
