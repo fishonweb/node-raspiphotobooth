@@ -1,3 +1,5 @@
+var socket = io();
+
 var carousel = document.getElementById('Carousel')
 
 socket.on('chat message', function(pic){
