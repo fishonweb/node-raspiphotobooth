@@ -1,25 +1,13 @@
 var RaspiCam = require("raspicam");
 var tile = require("./utils/tileimg.js")
-
-function zeroFill(i) {
-  return (i < 10 ? '0' : '') + i
-}
-
-function now () {
-  var d = new Date()
-  return d.getFullYear() + '-'
-    + zeroFill(d.getMonth() + 1) + '-'
-    + zeroFill(d.getDate()) + '--'
-    + zeroFill(d.getHours()) + ':'
-    + zeroFill(d.getMinutes())
-}
+var now = require("./utils/now.js")
+var socket = require('socket.io-client')('http://localhost:3000');
 
 var count = 1
 var path = "./pics/"
 var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
-
 
 
 var outputPath = "./pics/pic" + count + ".jpg";
@@ -62,10 +50,11 @@ camera.on("exit", function(){
   //console.log(count)
   if(count < 2){
     count++
-    camera.stop()
+    camera.stop() //clear camera before take new pic
     takePic(count)
   } else {
     tile(path, input, tileOutputPath, tileOutputName)
+    socket.emit('photobooth', tileOutputName);
     count = 1
   }
 });
@@ -73,13 +62,3 @@ camera.on("exit", function(){
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
-
-
-
-//to take a snapshot, start a timelapse or video recording
-//camera .start( );
-
-//to stop a timelapse or video recording
-/*setTimeout(function() {
-  camera.stop();
-}, 800)*/

@@ -1,17 +1,27 @@
 var express = require('express')
 var app = express()
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
-
-app.use('/pics', express.static('pics'));
 app.use('/photobooth', express.static('photobooth'));
 
-app.get('/', function (req, res) {
-  res.send('<img src="./pics/pic1.jpg" />')
-})
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/public/index.html');
+});
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
+  socket.on('photobooth', function(pic){
+    console.log('new photobooth : ' + pic);
+  });
+});
 
 
-app.listen(3000)
+
+http.listen(3000, function(){
+  console.log('listening on http://localhost:3000');
+});
