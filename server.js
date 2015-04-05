@@ -4,6 +4,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 app.use('/photobooth', express.static('photobooth'));
+app.use('/scripts', express.static('public/scripts'));
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
