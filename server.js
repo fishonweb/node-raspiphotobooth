@@ -17,6 +17,7 @@ io.on('connection', function(socket){
 
   socket.on('photobooth', function(pic){
     console.log('new photobooth : ' + pic);
+    io.emit('photobooth', pic);
   });
 });
 
