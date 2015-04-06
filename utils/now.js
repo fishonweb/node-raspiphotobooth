@@ -8,5 +8,6 @@ module.exports = function now () {
     + zeroFill(d.getMonth() + 1) + '-'
     + zeroFill(d.getDate()) + '--'
     + zeroFill(d.getHours()) + ':'
-    + zeroFill(d.getMinutes())
+    + zeroFill(d.getMinutes()) + ':'
+    + zeroFill(d.getSeconds())
 }
