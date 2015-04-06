@@ -14,6 +14,6 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
     .write(outputFolder  + outputName +".jpg", function (err) {
       if (err) console.log(err);
         console.log(this.outname + " created  ::  " + arguments[3])
-        socket.emit('photobooth', tileOutputName)
+        socket.emit('photobooth', outputName)
     })
 }
