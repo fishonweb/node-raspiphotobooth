@@ -53,8 +53,8 @@ camera.on("exit", function(){
     camera.stop() //clear camera before take new pic
     takePic(count)
   } else {
-    tile(path, input, tileOutputPath, tileOutputName)
-    socket.emit('photobooth', tileOutputName);
+    tile(path, input, tileOutputPath, tileOutputName, socket.emit('photobooth', tileOutputName))
+
     count = 1
   }
 });

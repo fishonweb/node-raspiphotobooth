@@ -1,7 +1,7 @@
 var gm = require("gm")
 
 
-module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName) {
+module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName, callback) {
   // a b  ->  a
   //          b
   console.log("tile image")
@@ -14,5 +14,8 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
     .write(outputFolder  + outputName +".jpg", function (err) {
       if (err) console.log(err);
         console.log(this.outname + " created  ::  " + arguments[3])
+        if(callback) {
+          callback()
+        }
     })
 }
