@@ -53,6 +53,7 @@ camera.on("exit", function(){
     camera.stop() //clear camera before take new pic
     takePic(count)
   } else {
+    tileOutputName = "chloju" + now()
     tile(path, input, tileOutputPath, tileOutputName)
 
     count = 1
