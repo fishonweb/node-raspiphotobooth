@@ -1,7 +1,7 @@
 var socket = io();
 
-var carouselWrapper = document.querySelectorlAll('.carousel-wrapper')[0]
-var carouselItems = carouselWrapper.querySelectorAll('.carousel-item')
+var carouselWrapper = document.getElementsByClassName('carousel-wrapper')[0]
+var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
 var index = 0;
 var delay = 2000;
 
