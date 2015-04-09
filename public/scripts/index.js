@@ -6,15 +6,17 @@ var index = 0;
 var delay = 2000;
 
 socket.on('photobooth', function(pic){
-  var refItem = null
-  if(carouselItems != undefined) {
-    refItem = carouselItems[carouselItems.length]
-    refItem = refItem.nextSibling
-  }
+  var refItem
   var element = document.createElement('div')
   element.className = "carousel-item"
   element.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
-  carouselWrapper.insertBefore(element, refItem)
+  if(carouselItems != undefined) {
+    refItem = carouselItems[carouselItems.length]
+    refItem = refItem.nextSibling
+    carouselWrapper.insertBefore(element, refItem)
+  } else {
+    carouselWrapper.innerHTML = '<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
+  }
   index++
 });
 
