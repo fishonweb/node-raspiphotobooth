@@ -15,22 +15,20 @@ socket.on('photobooth', function(pic){
     refItem = refItem.nextSibling
     carouselWrapper.insertBefore(element, refItem)
     index++
+    goToLeft(index)
   } else {
     carouselWrapper.innerHTML = '<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
   }
 });
 
-
-
 function goToLeft(index) {
-  if (index > 1) {
     setTimeout(function() {
     var translateX = -index * 100 + "%"
     var style = {
       transform: "translateX(" + translateX +")",
       transition: "transform .3s ease-in-out"
     }
-    carouselWrapper.style = style
+    carouselWrapper.style.transform = style.transform
+    carouselWrapper.style.transition = style.transition
     }, delay)
-  }
 }
