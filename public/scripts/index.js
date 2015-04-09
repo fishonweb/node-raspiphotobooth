@@ -6,7 +6,11 @@ var index = 0;
 var delay = 2000;
 
 socket.on('photobooth', function(pic){
-  carouselWrapper.innerHTML = carousel.innerHTML +'<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
+  var refItem = carouselItems[carouselItems.length]
+  var element = document.createElement('div')
+  element.className = "carousel-item"
+  element.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
+  carouselWrapper.insertBefore(element, refItem.nextSibling)
   index++
 });
 
