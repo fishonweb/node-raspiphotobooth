@@ -6,7 +6,10 @@ var index = 0;
 var delay = 2000;
 
 socket.on('photobooth', function(pic){
-  var refItem = carouselItems[carouselItems.length]
+  var refItem = null
+  if(carouselItems != undefined) {
+    refItem = carouselItems[carouselItems.length]
+  }
   var element = document.createElement('div')
   element.className = "carousel-item"
   element.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
