@@ -1,7 +1,26 @@
 var socket = io();
 
-var carousel = document.getElementById('carousel')
+var carouselWrapper = document.querySelectorlAll('.carousel-wrapper')[0]
+var carouselItems = carouselWrapper.querySelectorAll('.carousel-item')
+var index = 0;
+var delay = 2000;
 
 socket.on('photobooth', function(pic){
-  carousel.innerHTML = carousel.innerHTML + '<br/>' + '<img src="photobooth/' + pic + '.jpg" />'
+  carouselWrapper.innerHTML = carousel.innerHTML +'<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
+  index++
 });
+
+
+
+function goToLeft(index) {
+  if (index > 1) {
+    setTimeout(function() {
+    var translateX = -index * 100 + "%"
+    var style = {
+      transform: "translateX(" + translateX +")",
+      transition: "transform .3s ease-in-out"
+    }
+    carouselWrapper.style = style
+    }, delay)
+  }
+}

@@ -4,6 +4,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 app.use('/photobooth', express.static('photobooth'));
+app.use('/bower', express.static('bower_components'));
 app.use(express.static('public/'));
 
 app.get('/', function(req, res){

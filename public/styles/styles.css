@@ -1,0 +1,20 @@
+.carousel{
+  overflow:hidden;
+}
+
+.carousel-wrapper{
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.carousel-item{
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: top;
+  width: 100%;
+}
+
+.carousel-item img{
+  max-width: 100%;
+  width: 100%;
+}
