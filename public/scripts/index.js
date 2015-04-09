@@ -9,11 +9,12 @@ socket.on('photobooth', function(pic){
   var refItem = null
   if(carouselItems != undefined) {
     refItem = carouselItems[carouselItems.length]
+    refItem = refItem.nextSibling
   }
   var element = document.createElement('div')
   element.className = "carousel-item"
   element.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
-  carouselWrapper.insertBefore(element, refItem.nextSibling)
+  carouselWrapper.insertBefore(element, refItem)
   index++
 });
 
