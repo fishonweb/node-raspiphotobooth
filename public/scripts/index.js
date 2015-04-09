@@ -26,7 +26,7 @@ function goToLeft(index) {
     var translateX = -index * 100 + "%"
     var style = {
       transform: "translateX(" + translateX +")",
-      transition: "transform .3s ease-in-out"
+      transition: "transform 1s ease-in-out"
     }
     carouselWrapper.style.transform = style.transform
     carouselWrapper.style.transition = style.transition
