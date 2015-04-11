@@ -5,7 +5,7 @@ var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
 var index = 0
 var delay = 6000
 var intervalCarousel
-var moveTo
+var moveTo = 0
 
 socket.on('photobooth', function(pic) {
   var refItem
