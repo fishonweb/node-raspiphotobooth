@@ -18,7 +18,7 @@ socket.on('photobooth', function(pic) {
     carouselWrapper.insertBefore(element, refItem)
     index++
     goToLeft(index)
-    slide()
+    intervalCarousel = setInterval(slide, delay)
   } else {
     carouselWrapper.innerHTML = '<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
   }
@@ -38,5 +38,5 @@ function slide() {
     console.log("back to start")
     moveTo = 0
   }
-  intervalCarousel = setInterval(goToLeft(moveTo), delay)
+  goToLeft(moveTo)
 }
