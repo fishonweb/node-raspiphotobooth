@@ -36,5 +36,5 @@ function slide() {
   if(index === carouselItems.length) {
     moveTo = 0
   }
-  intervalCarousel = setInterval(gotoLeft(moveTo), delay)
+  intervalCarousel = setInterval(goToLeft(moveTo), delay)
 }
