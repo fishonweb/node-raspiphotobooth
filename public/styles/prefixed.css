@@ -1,3 +1,9 @@
+h1{
+  text-align: center;
+  margin: 0;
+  padding: 1.4em;
+}
+
 /* carousel style */
 .carousel{
   overflow:hidden;
