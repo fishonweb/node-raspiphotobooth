@@ -3,17 +3,23 @@ var socket = io()
 var carouselWrapper = document.getElementsByClassName('carousel-wrapper')[0]
 var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
 var overlay = document.getElementsByClassName('overlay-contentscale')[0]
+var loader = overlay.getElementsByClassName('preloader')[0]
 var index = 0
 var delay = 6000
 var intervalCarousel
 var moveTo = 0
 
 socket.on('photobooth', function(pic) {
-  overlay.classList.remove('open')
   var refItem
   var element = document.createElement('div')
+  var preview = document.createElement('div')
+  preview.className = "carousel-item"
+  preview.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
+  var picHTML = '<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
   element.className = "carousel-item"
   element.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
+  overlay.insertBefore(preview, loader)
+  loader.classList.add("hide")
   if(carouselItems.length != 0) {
     var length = carouselItems.length
     refItem = carouselItems[index]
@@ -24,13 +30,14 @@ socket.on('photobooth', function(pic) {
     clearInterval(intervalCarousel)
     intervalCarousel = setInterval(slide, delay)
   } else {
-    carouselWrapper.innerHTML = '<div class="carousel-item"><img src="photobooth/' + pic + '.jpg" /></div>'
+    carouselWrapper.innerHTML = picHTML
   }
 });
 
 socket.on('start', function(start) {
   console.log("socket start")
-  overlay.classList.add('open')
+  loader.classList.remove("hide")
+  overlay.classList.add("open")
 })
 
 function goToLeft(index) {

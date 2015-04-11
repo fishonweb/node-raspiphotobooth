@@ -514,6 +514,11 @@ body {
   -webkit-transform: rotateY(180deg) rotateZ(-60deg);
           transform: rotateY(180deg) rotateZ(-60deg);
 }
+
+.preloader.hide{
+  display: none;
+}
+
 .preloader .slice {
   border-top: 1.125em solid transparent;
   border-right: none;
