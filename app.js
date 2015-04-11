@@ -41,6 +41,8 @@ process.stdin.on('keypress', function (ch, key) {
   //Listen for enter keypress and start camera
   if(key.name == "return"){
     takePic(count)
+    var start = true
+    socket.emit('start', start)
   }
 
 });
