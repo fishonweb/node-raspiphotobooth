@@ -7,7 +7,7 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
   gm()
     .in('-page', '+0+0')  // Custom place for each of the images
     .in(inputFolder + inputArrayImgs[0])
-    .in('-page', '+1080+0')
+    .in('-page', '+1028+0')
     .in(inputFolder + inputArrayImgs[1])
     .mosaic()  // Merges the images as a matrix
     .write(outputFolder  + outputName +".jpg", function (err) {
