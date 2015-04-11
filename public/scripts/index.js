@@ -53,7 +53,7 @@ function goToLeft(index) {
 
 function slide() {
   console.log("move carousel", carouselItems.length, index)
-  var length = carouselItems.length
+  var length = carouselItems.length -1
   moveTo++
   if(moveTo > length) {
       moveTo = 0
