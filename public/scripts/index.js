@@ -25,6 +25,7 @@ socket.on('photobooth', function(pic) {
 });
 
 function goToLeft(index) {
+  console.log("goto ", index)
   var translateX = -index * 100 + "%"
   var transform = "translateX(" + translateX +")"
   carouselWrapper.style.transform = transform
@@ -34,6 +35,7 @@ function slide() {
   console.log("move carousel")
   var moveTo = index
   if(index === carouselItems.length) {
+    console.log("back to start")
     moveTo = 0
   }
   intervalCarousel = setInterval(goToLeft(moveTo), delay)
