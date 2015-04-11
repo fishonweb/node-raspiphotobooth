@@ -52,6 +52,7 @@ function goToLeft(index) {
   var translateX = -index * 100 + "%"
   var transform = "translateX(" + translateX +")"
   carouselWrapper.style.transform = transform
+  carouselWrapper.style.WebkitTransform = transform
 }
 
 function slide() {
