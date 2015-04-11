@@ -1,6 +1,10 @@
 /* carousel style */
 .carousel{
   overflow:hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .carousel-wrapper{
@@ -51,6 +55,7 @@ body {
 	background: #fff;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
+  height: 100vh;
 }
 
 .container.overlay-open {

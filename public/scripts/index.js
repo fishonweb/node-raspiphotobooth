@@ -22,7 +22,7 @@ socket.on('photobooth', function(pic) {
   loader.classList.add("hide")
   setTimeout(function() {
     overlay.classList.remove("open")
-  }, 4000)
+  }, 6000)
   if(carouselItems.length != 0) {
     var length = carouselItems.length
     refItem = carouselItems[index]
