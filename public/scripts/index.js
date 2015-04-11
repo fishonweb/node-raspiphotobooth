@@ -5,6 +5,7 @@ var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
 var overlay = document.getElementsByClassName('overlay-contentscale')[0]
 var loader = overlay.getElementsByClassName('preloader')[0]
 var preview = overlay.getElementsByClassName('carousel-item')[0]
+var container = document.getElementsByClassName('container')[0]
 var index = 0
 var delay = 6000
 var intervalCarousel
@@ -22,6 +23,7 @@ socket.on('photobooth', function(pic) {
   loader.classList.add("hide")
   setTimeout(function() {
     overlay.classList.remove("open")
+    container.classList.remove("overlay-open")
   }, 6000)
   if(carouselItems.length != 0) {
     var length = carouselItems.length
@@ -41,6 +43,7 @@ socket.on('start', function(start) {
   console.log("socket start")
   loader.classList.remove("hide")
   preview.classList.add("hide")
+  container.classList.add("overlay-open")
   overlay.classList.add("open")
 })
 
