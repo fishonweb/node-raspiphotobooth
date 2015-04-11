@@ -3,7 +3,7 @@ var socket = io()
 var carouselWrapper = document.getElementsByClassName('carousel-wrapper')[0]
 var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
 var index = 0
-var delay = 2000
+var delay = 4000
 var intervalCarousel
 
 socket.on('photobooth', function(pic) {
@@ -32,7 +32,7 @@ function goToLeft(index) {
 }
 
 function slide() {
-  console.log("move carousel")
+  console.log("move carousel", carouselItems.length, index)
   var moveTo = index
   if(index === carouselItems.length) {
     console.log("back to start")
