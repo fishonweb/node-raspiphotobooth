@@ -32,7 +32,10 @@
 	left: 0;
 	background: rgba(153,204,51,0.9);
 }
-
+.carousel-item img{
+  max-width: 100%;
+  width: 100%;
+}
 
 /* Effects */
 body {
@@ -514,11 +517,9 @@ body {
   -webkit-transform: rotateY(180deg) rotateZ(-60deg);
           transform: rotateY(180deg) rotateZ(-60deg);
 }
-
 .preloader.hide{
   display: none;
 }
-
 .preloader .slice {
   border-top: 1.125em solid transparent;
   border-right: none;
