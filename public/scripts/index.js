@@ -1,11 +1,12 @@
-var socket = io();
+var socket = io()
 
 var carouselWrapper = document.getElementsByClassName('carousel-wrapper')[0]
 var carouselItems = carouselWrapper.getElementsByClassName('carousel-item')
-var index = 0;
-var delay = 2000;
+var index = 0
+var delay = 2000
+var intervalSlider
 
-socket.on('photobooth', function(pic){
+socket.on('photobooth', function(pic) {
   var refItem
   var element = document.createElement('div')
   element.className = "carousel-item"
@@ -22,13 +23,15 @@ socket.on('photobooth', function(pic){
 });
 
 function goToLeft(index) {
-    setTimeout(function() {
-    var translateX = -index * 100 + "%"
-    var style = {
-      transform: "translateX(" + translateX +")",
-      transition: "transform 1s ease-in-out"
-    }
-    carouselWrapper.style.transform = style.transform
-    carouselWrapper.style.transition = style.transition
-    }, delay)
+  var translateX = -index * 100 + "%"
+  var transform = "translateX(" + translateX +")"
+  carouselWrapper.style.transform = transform
+}
+
+function slide() {
+  intervalSlider = setInterval(gotoLeft(index), delay)
+}
+
+if(carouselItems.length != 0) {
+  slide()
 }
