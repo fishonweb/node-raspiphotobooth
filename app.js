@@ -1,7 +1,9 @@
 var RaspiCam = require("raspicam");
 var tile = require("./utils/tileimg.js")
 var now = require("./utils/now.js")
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require("socket.io-client')('http://localhost:3000")
+var Gpio = require('onoff').Gpio,
+  button = new Gpio(4, 'in', 'both');
 
 var count = 1
 var path = "./pics/"
@@ -62,6 +64,12 @@ camera.on("exit", function(){
   }
 });
 
+
+button.watch(function(err, value) {
+  takePic(count)
+  var start = true
+  socket.emit('start', start)
+});
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
