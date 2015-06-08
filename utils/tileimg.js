@@ -1,7 +1,7 @@
 var gm = require("gm")
 var socket = require('socket.io-client')('http://localhost:3000');
 
-module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName) {
+module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName, callback) {
   // a, b  ->  a b
   console.log("tile image")
   gm()
@@ -15,4 +15,7 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
         console.log(this.outname + " created  ::  " + arguments[3])
         socket.emit('photobooth', outputName)
     })
+    if (callback) {
+      callback()
+    }
 }

@@ -31,3 +31,4 @@ node_modules
 pics/*.jpg
 pics/*.png
 pics/*.bmp
+photobooth/*
