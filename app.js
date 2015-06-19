@@ -61,6 +61,8 @@ keypress(process.stdin);
 process.stdin.on('keypress', function (ch, key) {
   if (key && key.ctrl && key.name == 'c') {
     console.log("goodbye !")
+    led.unexport();
+    button.unexport();
     process.exit();
   }
   //Listen for enter keypress and start camera
