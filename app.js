@@ -3,6 +3,7 @@ var tile = require("./utils/tileimg.js")
 var now = require("./utils/now.js")
 var socket = require("socket.io-client")("http://localhost:3000")
 var Gpio = require("onoff").Gpio,
+  led = new Gpio(14, 'out'),
   button = new Gpio(4, "in", "both")
 var levelup = require("levelup")
 var db = levelup("./mydb")
