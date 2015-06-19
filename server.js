@@ -24,6 +24,9 @@ io.on('connection', function(socket){
   socket.on('start', function(start){
     io.emit('start', start);
   });
+  socket.on('again', function(again){
+    io.emit('again', again);
+  });
 });
 
 
