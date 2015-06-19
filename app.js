@@ -96,9 +96,6 @@ button.watch(function(err, value) {
 });
 led.writeSync(1)
 
-socket.on("again", function() {
-  console.log("again")
-})
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
