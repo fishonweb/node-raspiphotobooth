@@ -5,6 +5,7 @@ var socket = require("socket.io-client")("http://localhost:3000")
 var Gpio = require("onoff").Gpio,
   led = new Gpio(14, 'out'),
   button = new Gpio(4, "in", "both")
+
 var levelup = require("levelup")
 var db = levelup("./mydb")
 
@@ -93,6 +94,7 @@ camera.on("exit", function(){
 button.watch(function(err, value) {
   getNewPic()
 });
+led.writeSync(1)
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
