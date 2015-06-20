@@ -1,7 +1,7 @@
 var RaspiCam = require("raspicam");
 var tile = require("./utils/tileimg.js")
 var now = require("./utils/now.js")
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require("socket.io-client")("http://localhost:3000");
 
 var count = 1
 var path = "./pics/"
