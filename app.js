@@ -46,8 +46,11 @@ process.stdin.on('keypress', function (ch, key) {
   }
   //Listen for enter keypress and start camera
   if(key.name == "return"){
+    pressed = true
+    console.log("button pressed !")
     takePic(count)
     var start = true
+    led.writeSync(0)
     socket.emit('start', start)
   }
 
@@ -82,7 +85,7 @@ button.watch(function(err, value) {
 led.writeSync(1)
 
 socket.on('picAgain', function() {
-  
+
   pressed = false
   led.writeSync(1)
   return pressed
