@@ -68,7 +68,10 @@ camera.on("exit", function(){
 
 button.watch(function(err, value) {
   console.log("button pressed !")
+  button.unwatch()
   takePic(count)
+  var start = true
+  socket.emit('start', start)
 })
 led.writeSync(1)
 
