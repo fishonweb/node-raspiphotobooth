@@ -64,12 +64,13 @@ camera.on("exit", function(){
 
     count = 1
   }
-});
+})
 
 button.watch(function(err, value) {
   console.log("button pressed !")
   takePic(count)
-});
+})
+led.writeSync(1)
 
-process.stdin.setRawMode(true);
-process.stdin.resume();
+process.stdin.setRawMode(true)
+process.stdin.resume()
