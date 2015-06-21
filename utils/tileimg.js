@@ -14,12 +14,6 @@ module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, output
       if (err) console.log(err);
         console.log(this.outname + " created  ::  " + arguments[3])
         socket.emit('photobooth', outputName)
-        button.watch(function(err, value) {
-          button.unwatch()
-          takePic(count)
-          var start = true
-          socket.emit('start', start)
-        })
     })
     if (callback) {
       callback()
