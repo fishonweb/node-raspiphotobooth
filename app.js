@@ -81,10 +81,11 @@ button.watch(function(err, value) {
 
 led.writeSync(1)
 
-socket.on('photobooth', function() {
+socket.on('picAgain', function() {
+  console.log("pic again")
   pressed = false
-  return pressed
   led.writeSync(1)
+  return pressed
 })
 
 process.stdin.setRawMode(true)
