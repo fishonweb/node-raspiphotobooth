@@ -9,6 +9,8 @@ var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
 
+var pressed = false
+
 var Gpio = require('onoff').Gpio,
   led = new Gpio(14, 'out'),
   button = new Gpio(4, 'in', 'both');
@@ -67,12 +69,23 @@ camera.on("exit", function(){
 })
 
 button.watch(function(err, value) {
-  console.log("button pressed !")
-  takePic(count)
-  var start = true
-  socket.emit('start', start)
+  if (pressed === false) {
+    pressed = true
+    console.log("button pressed !")
+    takePic(count)
+    var start = true
+    led.writeSync(0)
+    socket.emit('start', start)
+  }
 })
+
 led.writeSync(1)
+
+socket.on('photobooth', function() {
+  pressed = false
+  return pressed
+  led.writeSync(1)
+})
 
 process.stdin.setRawMode(true)
 process.stdin.resume()
