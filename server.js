@@ -25,6 +25,7 @@ io.on('connection', function(socket){
     io.emit('start', start);
   });
   socket.on('picAgain', function(picAgain){
+    console.log("pic again")
     io.emit('picAgain', picAgain);
   });
 });

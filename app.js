@@ -82,7 +82,7 @@ button.watch(function(err, value) {
 led.writeSync(1)
 
 socket.on('picAgain', function() {
-  console.log("pic again")
+  
   pressed = false
   led.writeSync(1)
   return pressed
