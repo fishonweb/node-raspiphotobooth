@@ -67,6 +67,7 @@ camera.on("exit", function(){
 });
 
 button.watch(function(err, value) {
+  console.log("button pressed !")
   takePic(count)
 });
 
