@@ -24,7 +24,7 @@ socket.on('photobooth', function(pic) {
   setTimeout(function() {
     overlay.classList.remove("open")
     container.classList.remove("overlay-open")
-    socket.emit('picAgain', true)
+    socket.emit('picAgain', picAgain)
   }, delay)
   if(carouselItems.length != 0) {
     var length = carouselItems.length
