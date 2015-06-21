@@ -9,6 +9,10 @@ var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
 
+var Gpio = require('onoff').Gpio,
+  led = new Gpio(14, 'out'),
+  button = new Gpio(4, 'in', 'both');
+
 
 var outputPath = "./pics/pic" + count + ".jpg";
 var options = {
@@ -62,6 +66,9 @@ camera.on("exit", function(){
   }
 });
 
+button.watch(function(err, value) {
+  takePic(count)
+});
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
