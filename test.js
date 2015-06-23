@@ -1,23 +1,42 @@
-// button is attaced to pin 17, led to 18
-var GPIO = require('onoff').Gpio,
-    led = new GPIO(14, 'out'),
-    button = new GPIO(4, 'in', 'both');
+var levelup = require("levelup")
 
-// define the callback function
-function light(err, state) {
+// 1) Create our database, supply location and options.
+//    This will create or open the underlying LevelDB store.
+var db = levelup('./mydb')
 
-  // check the state of the button
-  // 1 == pressed, 0 == not pressed
-  if(state == 1) {
-    // turn LED on
-    led.writeSync(1);
-  } else {
-    // turn LED off
-    led.writeSync(0);
-  }
+// 2) put a key & value
 
+for(var i = 0; i < 10; i++) {
+  db.put(i, 'LevelUP ' + i, function (err) {
+    if (err) return console.log('Ooops!', err) // some kind of I/O error
+  })
 }
 
-// pass the callback function to the
-// as the first argument to watch()
-button.watch(light);
+var stream = []
+
+db.createReadStream()
+  .on('data', function (data) {
+    stream.push({
+      "key" : data.key,
+      "value" : data.value
+    })
+  })
+  .on('error', function (err) {
+    console.log('Oh my!', err)
+  })
+  .on('close', function () {
+    console.log('Stream closed')
+  })
+  .on('end', function () {
+    console.log('Stream closed')
+    console.log(stream, typeof stream.length)
+    for (var i = 0; i < 20; i++) {
+      var len = stream.length
+      console.log(getRandomInt(0, 10))
+      console.log(stream[getRandomInt(1, stream.length)])
+    }
+  })
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }

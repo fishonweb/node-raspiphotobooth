@@ -31,3 +31,6 @@ node_modules
 pics/*.jpg
 pics/*.png
 pics/*.bmp
+
+# ignore level db
+mydb
