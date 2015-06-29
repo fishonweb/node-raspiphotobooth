@@ -1,7 +1,11 @@
 var RaspiCam = require("raspicam");
 var tile = require("./utils/tileimg.js")
 var now = require("./utils/now.js")
-var socket = require("socket.io-client")("http://localhost:3000");
+var randomPics = require("./utils/randompics.js")
+var socket = require("socket.io-client")("http://localhost:3000")
+var levelup = require("levelup")
+var db = levelup('./picsdb')
+var randomString = require('random-string')
 
 var count = 1
 var path = "./pics/"
@@ -87,10 +91,21 @@ button.watch(function(err, value) {
 led.writeSync(1)
 
 socket.on('picAgain', function() {
-
   pressed = false
   led.writeSync(1)
   return pressed
+})
+
+function getRandomString() {
+  var x = randomString()
+  return x
+}
+
+socket.on('photobooth', function(outputName) {
+  db.put(getRandomString(), outputName, function (err) {
+    if (err) return console.log('Ooops!', err) // some kind of I/O error
+  })
+  console.log(randomPics())
 })
 
 process.stdin.setRawMode(true)
