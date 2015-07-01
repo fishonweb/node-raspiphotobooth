@@ -14,6 +14,7 @@ var getRandomPics = function (count, database) {
         var len = stream.length
         randomPics.push(stream[getRandomInt(1, stream.length)])
       }
+      console.log(randomPics)
       return randomPics
     })
 }

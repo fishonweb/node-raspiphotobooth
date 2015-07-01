@@ -105,7 +105,7 @@ socket.on('photobooth', function(outputName) {
   db.put(getRandomString(), outputName, function (err) {
     if (err) return console.log('Ooops!', err) // some kind of I/O error
   })
-  console.log(randomPics())
+ randomPics(3, db)
 })
 
 process.stdin.setRawMode(true)
