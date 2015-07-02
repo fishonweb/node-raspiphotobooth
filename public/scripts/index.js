@@ -40,6 +40,12 @@ socket.on('photobooth', function(pic) {
   }
 });
 
+socket.on('random', function(randompics) {
+  for (var i = 0; i < randompics.length; i++) {
+    console.log(randompics[i])
+  }
+})
+
 socket.on('start', function(start) {
   console.log("socket start")
   loader.classList.remove("hide")
