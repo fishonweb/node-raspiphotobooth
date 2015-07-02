@@ -12,6 +12,7 @@ var path = "./pics/"
 var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
+var maxPics = 20
 
 var pressed = false
 
@@ -105,7 +106,7 @@ socket.on('photobooth', function(outputName) {
   db.put(getRandomString(), outputName, function (err) {
     if (err) return console.log('Ooops!', err) // some kind of I/O error
   })
- randomPics(3, db)
+ randomPics(maxPics, db)
 })
 
 process.stdin.setRawMode(true)
