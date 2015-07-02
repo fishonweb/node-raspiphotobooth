@@ -1,3 +1,5 @@
+var socket = require('socket.io-client')('http://localhost:3000');
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
