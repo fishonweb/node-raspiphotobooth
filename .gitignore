@@ -35,3 +35,7 @@ photobooth
 
 # ignore level db
 picsdb
+mydb
+
+# no test
+test.js
