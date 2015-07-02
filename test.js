@@ -13,7 +13,7 @@ for(var i = 0; i < 10; i++) {
 }
 
 var stream = []
-
+var randomPics = []
 db.createReadStream()
   .on('data', function (data) {
     stream.push({
@@ -30,12 +30,18 @@ db.createReadStream()
   .on('end', function () {
     console.log('Stream closed')
     console.log(stream, typeof stream.length)
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 3; i++) {
       var len = stream.length
-      console.log(getRandomInt(0, 10))
-      console.log(stream[getRandomInt(1, stream.length)])
+      randomPics.push(stream[getRandomInt(1, stream.length)])
     }
+      setPic(randomPics)
   })
+
+  function setPic(object) {
+    for(var i = 0; i < object.length; i++) {
+      console.log("obj " + i, object[i])
+    }
+  }
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;

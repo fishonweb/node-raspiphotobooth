@@ -21,6 +21,9 @@ io.on('connection', function(socket){
     console.log('new photobooth : ' + pic);
     io.emit('photobooth', pic);
   });
+  socket.on('random', function(randompics){
+    io.emit('random', randompics);
+  });
   socket.on('start', function(start){
     io.emit('start', start);
   });
