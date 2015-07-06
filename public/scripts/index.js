@@ -26,18 +26,19 @@ socket.on('photobooth', function(pic) {
     container.classList.remove("overlay-open")
     socket.emit('picAgain', true)
   }, delay)
-  if(carouselItems.length != 0) {
-    var length = carouselItems.length
-    refItem = carouselItems[index]
-    refItem = refItem.nextSibling
-    carouselWrapper.insertBefore(element, refItem)
-    index++
-    //goToLeft(index)
-    clearInterval(intervalCarousel)
-    intervalCarousel = setInterval(slide, delay)
-  } else {
-    carouselWrapper.innerHTML = picHTML
-  }
+  // if(carouselItems.length != 0) {
+  //   var length = carouselItems.length
+  //   refItem = carouselItems[index]
+  //   refItem = refItem.nextSibling
+  //   carouselWrapper.insertBefore(element, refItem)
+  //   index++
+  //   //goToLeft(index)
+  //   clearInterval(intervalCarousel)
+  //   intervalCarousel = setInterval(slide, delay)
+  // } else {
+  //   carouselWrapper.innerHTML = picHTML
+  // }
+  carouselWrapper.innerHTML = picHTML
 });
 
 socket.on("random", function(randompics) {
