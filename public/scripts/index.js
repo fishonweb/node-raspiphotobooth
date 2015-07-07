@@ -31,6 +31,7 @@ socket.on('photobooth', function(pic) {
     while (carouselWrapper.firstChild) {
       carouselWrapper.removeChild(carouselWrapper.firstChild);
     }
+    carouselWrapper.innerHTML = picHTML
   } else {
     carouselWrapper.innerHTML = picHTML
   }
