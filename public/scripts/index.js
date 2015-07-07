@@ -29,7 +29,7 @@ socket.on('photobooth', function(pic) {
   }, delay)
   if(carouselItems.length != 0) {
     while (carouselWrapper.firstChild) {
-      carouselWrapper.removeChild(element.firstChild);
+      carouselWrapper[0].removeChild(element.firstChild);
     }
   } else {
     carouselWrapper.innerHTML = picHTML
