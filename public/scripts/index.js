@@ -12,6 +12,7 @@ var intervalCarousel
 var moveTo = 0
 
 socket.on('photobooth', function(pic) {
+  console.log("photobooth")
   var refItem
   var element = document.createElement('div')
   preview.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
@@ -27,21 +28,16 @@ socket.on('photobooth', function(pic) {
     socket.emit('picAgain', true)
   }, delay)
   if(carouselItems.length != 0) {
-    var length = carouselItems.length
-    refItem = carouselItems[index]
-    refItem = refItem.nextSibling
-    carouselWrapper.insertBefore(element, refItem)
-    index++
-    //goToLeft(index)
-    clearInterval(intervalCarousel)
-    intervalCarousel = setInterval(slide, delay)
+    while (carouselWrapper.firstChild) {
+      carouselWrapper.removeChild(element.firstChild);
+    }
   } else {
     carouselWrapper.innerHTML = picHTML
   }
 });
 
 socket.on("random", function(randompics) {
-  console.log(randompics)
+  console.log("random")
   for (var i = 0; i < randompics.length; i++) {
     if(carouselItems.length != 0) {
       var element = document.createElement('div')
