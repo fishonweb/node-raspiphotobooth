@@ -47,7 +47,7 @@ socket.on("random", function(randompics) {
 
       var length = carouselItems.length
       refItem = carouselItems[index]
-      refItem = refItem.nextSibling
+      // refItem = refItem.nextSibling
       carouselWrapper.insertBefore(element, refItem)
       index++
       //goToLeft(index)
