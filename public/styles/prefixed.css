@@ -1,3 +1,7 @@
+body{
+ background: #f2eade url(images/bg.jpg) repeat top center;
+}
+
 h1{
   text-align: center;
   margin: 0;
