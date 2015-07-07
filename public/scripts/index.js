@@ -40,14 +40,26 @@ socket.on('photobooth', function(pic) {
   }
 });
 
-socket.on('random', function(randompics) {
+socket.on("random", function(randompics) {
   for (var i = 0; i < randompics.length; i++) {
-    console.log(randompics[i])
+    if(carouselItems.length != 0) {
+      var element = document.createElement('div')
+      element.className = "carousel-item"
+      element.innerHTML = '<img src="photobooth/' + randompics[i] + '.jpg" />'
+
+      var length = carouselItems.length
+      refItem = carouselItems[index]
+      refItem = refItem.nextSibling
+      carouselWrapper.insertBefore(element, refItem)
+      index++
+      //goToLeft(index)
+      clearInterval(intervalCarousel)
+      intervalCarousel = setInterval(slide, delay)
   }
 })
 
 socket.on('start', function(start) {
-  console.log("socket start")
+  // console.log("socket start")
   loader.classList.remove("hide")
   preview.classList.add("hide")
   container.classList.add("overlay-open")
@@ -55,7 +67,7 @@ socket.on('start', function(start) {
 })
 
 function goToLeft(index) {
-  console.log("goto ", index)
+  // console.log("goto ", index)
   var translateX = -index * 100 + "%"
   var transform = "translateX(" + translateX +")"
   carouselWrapper.style.transform = transform
@@ -63,7 +75,7 @@ function goToLeft(index) {
 }
 
 function slide() {
-  console.log("move carousel", carouselItems.length, index)
+  // console.log("move carousel", carouselItems.length, index)
   var length = carouselItems.length -1
   moveTo++
   if(moveTo > length) {
