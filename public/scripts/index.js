@@ -41,6 +41,7 @@ socket.on('photobooth', function(pic) {
 });
 
 socket.on("random", function(randompics) {
+  console.log(randompics)
   for (var i = 0; i < randompics.length; i++) {
     if(carouselItems.length != 0) {
       var element = document.createElement('div')
@@ -55,6 +56,7 @@ socket.on("random", function(randompics) {
       //goToLeft(index)
       clearInterval(intervalCarousel)
       intervalCarousel = setInterval(slide, delay)
+    }
   }
 })
 
