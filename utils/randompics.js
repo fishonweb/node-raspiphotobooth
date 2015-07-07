@@ -1,3 +1,5 @@
+var socket = require('socket.io-client')('http://localhost:3000');
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -14,7 +16,9 @@ var getRandomPics = function (count, database) {
         var len = stream.length
         randomPics.push(stream[getRandomInt(1, stream.length)])
       }
-      socket.emit("random", randomPics)
+       console.log(randomPics)
+      // return randomPics
+      socket.emit('random', randomPics)
     })
 }
 
