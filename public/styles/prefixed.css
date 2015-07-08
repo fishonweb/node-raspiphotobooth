@@ -1,7 +1,13 @@
+@font-face{
+    font-family : "tattoo";
+    src : url('../fonts/VTC-FreehandTattooOne.ttf') format('ttf');
+}
+
 h1{
   text-align: center;
   margin: 0;
   padding: 1.4em;
+  font-family: "tattoo", arial, helvetica, sans-serif;
 }
 
 /* carousel style */
