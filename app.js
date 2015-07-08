@@ -12,7 +12,7 @@ var path = "./pics/"
 var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
-var maxPics = 20
+var maxPics = 4
 
 var pressed = false
 

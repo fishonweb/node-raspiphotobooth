@@ -12,6 +12,7 @@ var intervalCarousel
 var moveTo = 0
 
 socket.on('photobooth', function(pic) {
+  console.log("photobooth")
   var refItem
   var element = document.createElement('div')
   preview.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
@@ -26,22 +27,18 @@ socket.on('photobooth', function(pic) {
     container.classList.remove("overlay-open")
     socket.emit('picAgain', true)
   }, delay)
-  // if(carouselItems.length != 0) {
-  //   var length = carouselItems.length
-  //   refItem = carouselItems[index]
-  //   refItem = refItem.nextSibling
-  //   carouselWrapper.insertBefore(element, refItem)
-  //   index++
-  //   //goToLeft(index)
-  //   clearInterval(intervalCarousel)
-  //   intervalCarousel = setInterval(slide, delay)
-  // } else {
-  //   carouselWrapper.innerHTML = picHTML
-  // }
-  carouselWrapper.innerHTML = picHTML
+  if(carouselItems.length != 0) {
+    while (carouselWrapper.firstChild) {
+      carouselWrapper.removeChild(carouselWrapper.firstChild);
+    }
+    carouselWrapper.innerHTML = picHTML
+  } else {
+    carouselWrapper.innerHTML = picHTML
+  }
 });
 
 socket.on("random", function(randompics) {
+  console.log("random")
   for (var i = 0; i < randompics.length; i++) {
     if(carouselItems.length != 0) {
       var element = document.createElement('div')
@@ -50,12 +47,12 @@ socket.on("random", function(randompics) {
 
       var length = carouselItems.length
       refItem = carouselItems[index]
-      refItem = refItem.nextSibling
       carouselWrapper.insertBefore(element, refItem)
       index++
       //goToLeft(index)
       clearInterval(intervalCarousel)
       intervalCarousel = setInterval(slide, delay)
+    }
   }
 })
 
@@ -84,3 +81,32 @@ function slide() {
   }
   goToLeft(moveTo)
 }
+
+// radialtimer
+// rAF - https://raw.githubusercontent.com/darius/requestAnimationFrame/master/requestAnimationFrame.min.js
+"use strict";if(!Date.now)Date.now=function(){return(new Date).getTime()};(function(){var n=["webkit","moz"];for(var e=0;e<n.length&&!window.requestAnimationFrame;++e){var i=n[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"];window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var a=0;window.requestAnimationFrame=function(n){var e=Date.now();var i=Math.max(a+16,e);return setTimeout(function(){n(a=i)},i-e)};window.cancelAnimationFrame=clearTimeout}})();
+
+// It's the final countdown!
+(function(doc) {
+    'use strict';
+    var totalTime = 5,
+        currentTime = totalTime,
+        percentTime = null,
+        timerId = null,
+        timerText = doc.querySelector('.text'),
+        timerCircle = doc.querySelector('.circle');
+
+    timerId = function() {
+        if (currentTime === -1) { return; }
+        timerText.textContent = currentTime;
+        percentTime = Math.round((currentTime/totalTime) * 100);
+        timerCircle.style.strokeDashoffset = percentTime - 100;
+
+        setTimeout(function() {
+          	timerText.textContent = currentTime;
+            currentTime -= 1;
+            requestAnimationFrame(timerId);
+        }, 1000);
+    };
+    timerId();
+})(document);
