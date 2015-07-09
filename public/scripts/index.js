@@ -13,6 +13,8 @@ var moveTo = 0
 
 socket.on('photobooth', function(pic) {
   console.log("photobooth")
+  var timer = document.querySelector(".timer")
+  timer.classList.add("timer--done")
   var refItem
   var element = document.createElement('div')
   preview.innerHTML = '<img src="photobooth/' + pic + '.jpg" />'
@@ -65,6 +67,8 @@ socket.on('start', function(start) {
 })
 
 socket.on('timer', function(timer) {
+  var el = document.querySelector(".timer")
+  el.classList.remove("timer--done")
   radialTimer(document, timer);
 })
 
