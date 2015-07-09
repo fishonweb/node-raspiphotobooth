@@ -64,6 +64,10 @@ socket.on('start', function(start) {
   overlay.classList.add("open")
 })
 
+socket.on('timer', function(timer) {
+  radialTimer(document, timer);
+})
+
 function goToLeft(index) {
   // console.log("goto ", index)
   var translateX = -index * 100 + "%"
@@ -84,17 +88,37 @@ function slide() {
 
 // radialtimer
 // rAF - https://raw.githubusercontent.com/darius/requestAnimationFrame/master/requestAnimationFrame.min.js
-"use strict";if(!Date.now)Date.now=function(){return(new Date).getTime()};(function(){var n=["webkit","moz"];for(var e=0;e<n.length&&!window.requestAnimationFrame;++e){var i=n[e];window.requestAnimationFrame=window[i+"RequestAnimationFrame"];window.cancelAnimationFrame=window[i+"CancelAnimationFrame"]||window[i+"CancelRequestAnimationFrame"]}if(/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)||!window.requestAnimationFrame||!window.cancelAnimationFrame){var a=0;window.requestAnimationFrame=function(n){var e=Date.now();var i=Math.max(a+16,e);return setTimeout(function(){n(a=i)},i-e)};window.cancelAnimationFrame=clearTimeout}})();
-
+if (!Date.now) Date.now = function() {
+  return (new Date).getTime()
+};
+(function() {
+  var n = ["webkit", "moz"];
+  for (var e = 0; e < n.length && !window.requestAnimationFrame; ++e) {
+    var i = n[e];
+    window.requestAnimationFrame = window[i + "RequestAnimationFrame"];
+    window.cancelAnimationFrame = window[i + "CancelAnimationFrame"] || window[i + "CancelRequestAnimationFrame"]
+  }
+  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+    var a = 0;
+    window.requestAnimationFrame = function(n) {
+      var e = Date.now();
+      var i = Math.max(a + 16, e);
+      return setTimeout(function() {
+        n(a = i)
+      }, i - e)
+    };
+    window.cancelAnimationFrame = clearTimeout
+  }
+})();
 // It's the final countdown!
-(function(doc) {
+function radialTimer (element, timeout) {
     'use strict';
-    var totalTime = 5,
+    var totalTime = timeout / 1000, //timeout is in ms and I need s now
         currentTime = totalTime,
         percentTime = null,
         timerId = null,
-        timerText = doc.querySelector('.text'),
-        timerCircle = doc.querySelector('.circle');
+        timerText = element.querySelector('.text'),
+        timerCircle = element.querySelector('.circle');
 
     timerId = function() {
         if (currentTime === -1) { return; }
@@ -109,4 +133,4 @@ function slide() {
         }, 1000);
     };
     timerId();
-})(document);
+};

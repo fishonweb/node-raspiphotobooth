@@ -40,6 +40,7 @@ function takePic(count) {
   outputPath = path + "pic" + count + ".jpg";
   input.push("pic" + count + ".jpg")
   camera.set("output", outputPath)
+  socket.emit('timer', timer)
   return camera.start()
 }
 
