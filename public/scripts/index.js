@@ -7,7 +7,7 @@ var loader = overlay.getElementsByClassName('preloader')[0]
 var preview = overlay.getElementsByClassName('carousel-item')[0]
 var container = document.getElementsByClassName('container')[0]
 var index = 0
-var delay = 6000
+var delay = 3000
 var intervalCarousel
 var moveTo = 0
 
