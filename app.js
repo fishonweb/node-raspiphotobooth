@@ -13,7 +13,7 @@ var tileOutputPath = "./photobooth/"
 var tileOutputName = "chloju" + now()
 var input = []
 var timer = 3000 //time before pic in ms
-var maxPics = 4
+var maxPics = 20
 
 var pressed = false
 
@@ -29,7 +29,7 @@ var options = {
   height : 768,
   output : outputPath,
   quality : 10,
-  timeout : timer
+  timeout : timer,
   fullscreen : true
 }
 camera = RaspiCam(options);
