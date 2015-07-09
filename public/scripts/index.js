@@ -126,6 +126,10 @@ function radialTimer (element, timeout) {
 
     timerId = function() {
         if (currentTime === -1) { return; }
+        if (currentTime === 0) {
+          var el = document.querySelector(".timer")
+          el.classList.add("timer--done")
+        }
         timerText.textContent = currentTime;
         percentTime = Math.round((currentTime/totalTime) * 100);
         timerCircle.style.strokeDashoffset = percentTime - 100;
