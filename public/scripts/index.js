@@ -125,6 +125,7 @@ function radialTimer (element, timeout) {
         timerCircle = element.querySelector('.circle');
 
     timerId = function() {
+        console.log(currentTime)
         if (currentTime === -1) { return; }
         if (currentTime === 0) {
           var el = document.querySelector(".timer")
