@@ -47,7 +47,7 @@ h1{
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: rgba(153,204,51,0.9);
+	background: rgba(220, 20, 40, .9);
 }
 .overlay .carousel-item{
   position: absolute;
