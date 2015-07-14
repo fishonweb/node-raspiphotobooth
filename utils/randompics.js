@@ -12,9 +12,13 @@ var getRandomPics = function (count, database) {
       stream.push(data)
     })
     .on('end', function () {
-      for (var i = 0; i < count; i++) {
-        var len = stream.length
-        randomPics.push(stream[getRandomInt(1, stream.length)])
+      var len = stream.length
+      if(count > len) {
+        randomPics.push(stream[0])
+      } else {
+        for (var i = 0; i < count; i++) {
+          randomPics.push(stream[getRandomInt(1, stream.length)])
+        }
       }
        console.log(randomPics)
       // return randomPics
