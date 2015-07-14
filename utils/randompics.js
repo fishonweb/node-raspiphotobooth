@@ -14,7 +14,7 @@ var getRandomPics = function (count, database) {
     .on('end', function () {
       var len = stream.length
       if(count > len) {
-        for(var i = 0; i < count; i++) {
+        for(var i = 0; i < len; i++) {
           randomPics.push(stream[i])
         }
       } else {
