@@ -32,6 +32,8 @@ pics/*.jpg
 pics/*.png
 pics/*.bmp
 photobooth
+public/images/*.jpg
+public/images/*.png
 
 # ignore level db
 picsdb

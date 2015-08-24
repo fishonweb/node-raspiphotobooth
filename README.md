@@ -24,4 +24,10 @@ Run ```npm install```
 
 Run ```node server``` and ```node app```
 
+Go to http://localhost:3000 in your browser.
+Click on your button, wait for pic...
 Enjoy !
+
+## Customize
+You can customize your app.
+Modify or add css in ```public/styles/```.
