@@ -41,5 +41,5 @@ Modify or add css in ```public/styles/```.
 
 
 ## DIY
-That's my DIY photobooth, make with some scratch plywood, vis and glue. Be creative !
+That's my DIY photobooth, make with some scrap plywood, screws and glue. Be creative !
 >![Final DIY photobooth](docs/images/final_photobooth.jpg "Final DIY photobooth")
