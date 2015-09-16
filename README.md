@@ -38,3 +38,8 @@ Retry when the LED goes on.
 ## Customize
 You can customize your app.
 Modify or add css in ```public/styles/```.
+
+
+## DIY
+That's my DIY photobooth, make with some scratch plywood, vis and glue. Be creative !
+>![alt text](docs/images/final_photobooth.png "Final DIY photobooth")
