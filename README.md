@@ -10,7 +10,7 @@ Photobooth script for raspberry pi and raspicam using GPIO
 * raspicam
 
 ### Schema
->![alt text](docs/images/raspiphotobooth_bb.png "Electronic Schema")
+>![Electronic Schema](docs/images/raspiphotobooth_bb.png "Electronic Schema")
 
 
 ## Installation
@@ -42,4 +42,4 @@ Modify or add css in ```public/styles/```.
 
 ## DIY
 That's my DIY photobooth, make with some scratch plywood, vis and glue. Be creative !
->![alt text](docs/images/final_photobooth.jpg "Final DIY photobooth")
+>![Final DIY photobooth](docs/images/final_photobooth.jpg "Final DIY photobooth")
