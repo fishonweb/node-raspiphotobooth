@@ -38,6 +38,7 @@ public/images/*.png
 # ignore level db
 picsdb
 mydb
+params
 
 # no test
 test.js

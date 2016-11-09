@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin // photobooth</title>
+</head>
+<body>
+    <form action="api/params" method="get">
+        <fieldset>
+            <div class="formgroup">
+                <label for="title" class="formgroup_label">Title</label>
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    class="formgroup_input formgroup_input--text"
+                    placeholder="My title"
+                >
+            </div>
+            <div class="formgroup">
+                <label for="picNumber" class="formgroup_label">Nombre de photos</label>
+                <select name="picNumber" id="" class="formgroup_input formgroup_input--select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="formgroup">
+                <label for="time" class="formgroup_label">Time between pics (in milisecond)</label>
+                <input
+                id="time"
+                name="time"
+                type="number"
+                min-range="1000"
+                max-range="10000"
+                class="formgroup_input formgroup_input--number"
+                placeholder="3000"
+                >
+            </div>
+        </fieldset>
+        <input type="submit">
+    </form>
+</body>
+</html>

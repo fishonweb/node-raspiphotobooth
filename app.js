@@ -1,21 +1,22 @@
 var RaspiCam = require("raspicam");
-var tile = require("./utils/tileimg.js")
-var now = require("./utils/now.js")
-var randomPics = require("./utils/randompics.js")
-var socket = require("socket.io-client")("http://localhost:3000")
-var levelup = require("levelup")
-var db = levelup('./picsdb')
-var randomString = require('random-string')
+var tile = require("./utils/tileimg.js");
+var now = require("./utils/now.js");
+var randomPics = require("./utils/randompics.js");
+var socket = require("socket.io-client")("http://localhost:3000");
+var levelup = require("levelup");
+var db = levelup('./picsdb');
+var randomString = require('random-string');
+var nodeArgs = process.argv.slice(2);
 
-var count = 1
-var path = "./pics/"
-var tileOutputPath = "./photobooth/"
-var tileOutputName = "chloju" + now()
-var input = []
-var timer = 3000 //time before pic in ms
-var maxPics = 20
+var count = 1;
+var path = "./pics/";
+var tileOutputPath = "./photobooth/";
+var tileOutputName = "chloju" + now();
+var input = [];
+var timer = 3000; //time before pic in ms
+var maxPics = 20;
 
-var pressed = false
+var pressed = false;
 
 var Gpio = require('onoff').Gpio,
   led = new Gpio(14, 'out'),
