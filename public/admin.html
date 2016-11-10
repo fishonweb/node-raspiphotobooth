@@ -2,44 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Admin // photobooth</title>
+    <link rel="stylesheet" href="bower/materialize/dist/css/materialize.min.css">
 </head>
-<body>
-    <form action="api/params" method="get">
-        <fieldset>
-            <div class="formgroup">
-                <label for="title" class="formgroup_label">Title</label>
-                <input
-                    id="title"
-                    name="title"
-                    type="text"
-                    class="formgroup_input formgroup_input--text"
-                    placeholder="My title"
-                >
+<body class="grey lighten-5">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s12">
+                    <a href="#" class="brand-logo">Raspiphotobooth</a>
+                    <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/">Photobooth</a></li>
+                        <li class="active"><a href="/admin">Parameters</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-nav">
+                        <li><a href="/">Photobooth</a></li>
+                        <li class="active"><a href="/admin">Parameters</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="formgroup">
-                <label for="picNumber" class="formgroup_label">Nombre de photos</label>
-                <select name="picNumber" id="" class="formgroup_input formgroup_input--select">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            <div class="formgroup">
-                <label for="time" class="formgroup_label">Time between pics (in milisecond)</label>
-                <input
-                id="time"
-                name="time"
-                type="number"
-                min-range="1000"
-                max-range="10000"
-                class="formgroup_input formgroup_input--number"
-                placeholder="3000"
-                >
-            </div>
-        </fieldset>
-        <input type="submit">
-    </form>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col s12">
+            <h3 class="align-left">Parameters</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form action="javascript:submitParams()" method="post" class="col s12">
+                <fieldset>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input
+                            id="title"
+                            name="title"
+                            type="text"
+                            class="formgroup_input formgroup_input--text"
+                            placeholder="My title"
+                            >
+                            <label for="title" class="formgroup_label">Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <div class="range-field">
+                                <input id="picNumber" name="picNumber" type="range" id="test5" min="1" max="4" />
+                            </div>
+                            <label for="picNumber" class="formgroup_label active">Nombre de photos</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input
+                            id="time"
+                            name="time"
+                            type="number"
+                            min="1000"
+                            max="10000"
+                            step="500"
+                            class="formgroup_input formgroup_input--number"
+                            placeholder="3000"
+                            >
+                            <label for="time" class="formgroup_label">Time between pics (in milisecond)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <button class="btn waves-effect waves-light" name="action" id="submit">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="bower/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower/materialize/dist/js/materialize.min.js"></script>
+    <script src="scripts/form.js"></script>
+    <script src="/api/getparams/?callback=getParam"></script>
 </body>
 </html>

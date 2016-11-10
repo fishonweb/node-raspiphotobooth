@@ -1,0 +1,28 @@
+{
+  "name": "node-photobooth",
+  "description": "Node photobooth for rapsberry pi and raspi cam",
+  "main": "app.js",
+  "authors": [
+    "wrench13"
+  ],
+  "license": "gnu",
+  "keywords": [
+    "node",
+    "photobooth",
+    "raspberrypi",
+    "rpi"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.8",
+    "normalize-strings": "normalize#^1.1.0",
+    "normalize-css": "normalize.css#^5.0.0"
+  }
+}

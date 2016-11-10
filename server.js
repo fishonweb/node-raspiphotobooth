@@ -16,29 +16,33 @@ app.get('/', function(req, res){
 });
 
 app.get('/admin', function(req, res){
-    console.log(res.req.query)
   res.sendFile(__dirname + '/public/admin.html');
 });
 
 app.get('/api/params', function(req, res) {
     var params = {
-        title : req.param('title'),
-        picNumber : req.param('picNumber'),
-        time : req.param('time')
+        title : req.query.title,
+        picNumber : req.query.picNumber,
+        time : req.query.time
     };
     dbParams.put('params', JSON.stringify(params), function (err) {
-        if (err) return console.log('Ooops!', err) // some kind of I/O error
+        if (err) {
+            return console.log('Ooops!', err) // some kind of I/O error
+            res.sendStatus(500, err);
+        }
     })
-    dbParams.get('params', function (err, value) {
-    if (err) return console.log('Ooops!', err) // likely the key was not found
-
-    // ta da!
-    var valueObj = JSON.parse(value);
-    console.log('params=' + JSON.stringify(value))
-  })
-    res.send(params.title + ' ' + params.picNumber + ' ' + params.time);
+    res.json(params);
 });
 
+app.get('/api/getparams', function (req, res) {
+    dbParams.get('params', function (err, value) {
+        if (err) return console.log('Ooops!', err) // likely the key was not found
+
+        // ta da!
+        var appParam = JSON.parse(value);
+        res.jsonp(appParam);
+    })
+})
 
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -65,8 +69,6 @@ io.on('connection', function(socket){
     io.emit('picAgain', picAgain);
   });
 });
-
-
 
 http.listen(3000, function(){
   console.log('listening on http://localhost:3000');
