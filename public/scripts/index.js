@@ -10,6 +10,12 @@ var index = 0
 var delay = 3000
 var intervalCarousel
 var moveTo = 0
+preview.classList.add("carousel-item--preview")
+
+function getParam (appParam) {
+    var title = document.querySelector('h1');
+    title.innerText = appParam.title;
+}
 
 socket.on('photobooth', function(pic) {
   console.log("photobooth")
