@@ -15,8 +15,9 @@ Photobooth script for raspberry pi and raspicam using GPIO
 
 ## Installation
 ### requirements
-* NodeJS
-* python
+* NodeJS >= V10
+* python 2.3
+* [GraphicsMagick](http://www.graphicsmagick.org/)
 
 Clone this repo.
 
