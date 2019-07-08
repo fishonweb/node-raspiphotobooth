@@ -9,23 +9,21 @@ var getRandomPics = function (count, database) {
   var randomPics = []
   database.createValueStream()
     .on('data', function (data) {
-      stream.push(data)
+      stream.push(data);
     })
     .on('end', function () {
-      var len = stream.length
-      if(count > len) {
-        for(var i = 0; i < len; i++) {
-          randomPics.push(stream[i])
+      var len = stream.length;
+      if (count > len) {
+        for (var i = 0; i < len; i++) {
+          randomPics.push(stream[i].toString('utf8'));
         }
       } else {
         for (var i = 0; i < count; i++) {
-          randomPics.push(stream[getRandomInt(1, stream.length)])
+          randomPics.push(stream[getRandomInt(1, stream.length)]);
         }
       }
-       console.log(randomPics)
-      // return randomPics
-      socket.emit('random', randomPics)
+      socket.emit('random', randomPics);
     })
 }
 
-module.exports = getRandomPics
+module.exports = getRandomPics;
