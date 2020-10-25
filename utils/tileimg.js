@@ -1,5 +1,5 @@
 var gm = require('gm')
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require('socket.io-client')(`http://localhost:${process.env.SERVER_PORT}`);
 
 module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName, tileNum, callback) {
     // a, b  ->  a b
