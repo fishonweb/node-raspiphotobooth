@@ -4,7 +4,10 @@
   "description": "Node photobooth for rapsberry pi and raspi cam",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "env-cmd -f ./.env nodemon server.js",
+    "app": "env-cmd -f ./.env nodemon app.js",
+    "start": "npm run server && npm run app"
   },
   "engines": {
     "node": ">=10.0"
@@ -26,17 +29,24 @@
   },
   "homepage": "https://github.com/wrench13/node-photobooth",
   "devDependencies": {
-    "bower": "~1.4.1",
+    "bower": "^1.4.2",
+    "env-cmd": "^10.1.0",
+    "gulp": "~3.9.0",
     "gulp-autoprefixer": "~2.3.1",
-    "gulp": "~3.9.0"
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.17.1",
     "gm": "^1.23.1",
+    "g": "^2.0.1",
+    "jquery": "^3.5.1",
     "keypress": "^0.2.1",
     "leveldown": "^5.1.1",
     "levelup": "^4.1.0",
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0",
+    "normalize.css": "^8.0.1",
     "onoff": "^1.2.0",
     "random-string": "^0.1.2",
     "raspicam": "^0.2.14",

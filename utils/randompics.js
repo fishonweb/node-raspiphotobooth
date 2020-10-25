@@ -1,4 +1,4 @@
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require('socket.io-client')(`http://localhost:${process.env.SERVER_PORT}`);
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
