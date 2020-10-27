@@ -13,15 +13,15 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/photobooth", express.static("photobooth"));
-app.use(express.static("public/"));
+app.use(express.static("dist/"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.get("/admin", function (req, res) {
-  res.sendFile(__dirname + "/public/admin.html");
+  res.sendFile(__dirname + "/dist/admin.html");
 });
 
 app.get("/pictures", (req, res) => {
