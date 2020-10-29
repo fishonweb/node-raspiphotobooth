@@ -1,15 +1,16 @@
-var gm = require('gm')
-var socket = require('socket.io-client')(`http://localhost:${process.env.SERVER_PORT}`);
+const gm = require('gm');
 
-module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName, tileNum, callback) {
-    // a, b  ->  a b
-    console.log("tile image")
+module.exports = function tile(inputFolder, inputArrayImgs, outputFolder, outputName) {
+  // a, b  ->  a b
+  console.log('tile image');
+  return new Promise((resolve, reject) => {
     gm(inputFolder + inputArrayImgs[0])
-        .write(outputFolder + outputName + '.jpg', function (err) {
-            if (err) console.log(err);
-            socket.emit('photobooth', outputName);
-        });
-    if (callback) {
-        callback()
-    }
-}
+      .write(`${outputFolder + outputName}.jpg`, (err) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        }
+        resolve(outputName);
+      });
+  });
+};
