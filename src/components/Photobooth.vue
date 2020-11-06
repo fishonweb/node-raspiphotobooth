@@ -46,11 +46,20 @@ export default {
       this.overlay = true;
     });
 
+    socket.on('welcome', () => {
+      this.overlay = true;
+    });
+
     socket.on('photobooth', (pic) => {
       this.preview = pic;
       setTimeout(() => {
         this.preview = null;
       }, 2000);
+    });
+
+    socket.on('random', (pics) => {
+      console.log('socket random', pics);
+      this.pictures = pics;
     });
 
     axios

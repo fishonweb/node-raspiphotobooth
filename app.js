@@ -75,6 +75,7 @@ function mockCamera() {
         console.log('Ooops!', err);
       }
     });
+    socket.emit('photobooth', outputName);
     return randomPics(maxPics, db);
   }).catch((err) => console.error(err));
   count = 1;
