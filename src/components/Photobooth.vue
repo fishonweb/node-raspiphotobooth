@@ -1,11 +1,7 @@
 <template>
   <div>
-    <v-carousel
-      cycle
-      height="100vh"
-      hide-delimiter-background
-      show-arrows-on-hover
-      v-if="!overlay">
+    <h1 class="center">{{ title }}</h1>
+    <v-carousel cycle height="100vh" hide-delimiter-background show-arrows-on-hover v-if="!overlay">
       <v-carousel-item v-for="(picture, i) in pictures" :key="i">
         <v-sheet height="100%">
           <v-row class="fill-height" align="center" justify="center">
@@ -15,13 +11,19 @@
       </v-carousel-item>
     </v-carousel>
 
-    <PreviewPicture v-bind:picture="`${picturesURL}/${preview}`" v-if="preview"/>
+    <PreviewPicture v-bind:picture="`${picturesURL}/${preview}`" v-if="preview" />
 
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="120"></v-progress-circular>
     </v-overlay>
   </div>
 </template>
+
+<style lang="scss">
+.center {
+  text-align: center;
+}
+</style>
 
 <script>
 import axios from 'axios';
@@ -33,11 +35,15 @@ export default {
   components: {
     PreviewPicture,
   },
+  beforeMount() {
+    this.getParams();
+  },
   data: () => ({
     overlay: false,
     preview: null,
     picturesURL: `${process.env.VUE_APP_PHOTOBOOTH_URL}/photobooth`,
     pictures: null,
+    title: 'RaspiPhotobooth',
   }),
   mounted() {
     const socket = io(process.env.VUE_APP_PHOTOBOOTH_URL);
@@ -56,6 +62,12 @@ export default {
     axios
       .get(`${process.env.VUE_APP_PHOTOBOOTH_URL}/pictures`)
       .then((response) => (this.pictures = response.data));
+  },
+  methods: {
+    async getParams() {
+      const { data } = await axios.get('http://localhost:3009/api/getparams');
+      return (this.title = data && data.title ? data.title : null);
+    },
   },
 };
 </script>
