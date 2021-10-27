@@ -2,48 +2,13 @@
   "name": "node-photobooth",
   "version": "1.0.0",
   "description": "Node photobooth for rapsberry pi and raspi cam",
-  "main": "index.js",
+  "author": "wrench13",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wrench13/node-photobooth.git"
-  },
-  "keywords": [
-    "node",
-    "photobooth",
-    "raspberrypi",
-    "rpi"
-  ],
-  "author": "wrench13",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wrench13/node-photobooth/issues"
-  },
-  "homepage": "https://github.com/wrench13/node-photobooth",
-  "devDependencies": {
-    "@vue/babel-preset-app": "^4.5.14",
-    "@vue/cli-plugin-babel": "^3.3.0",
-    "@vue/cli-plugin-eslint": "^4.5.14",
-    "@vue/cli-plugin-router": "^4.5.8",
-    "@vue/cli-service": "^3.12.1",
-    "@vue/eslint-config-airbnb": "^5.0.2",
-    "babel": "^6.23.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "7.32.0",
-    "eslint-config-prettier": "^6.14.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^7.19.1",
-    "prettier-eslint": "^8.2.2",
-    "sass": "^1.19.0",
-    "sass-loader": "^8.0.0",
-    "vue-cli-plugin-vuetify": "~2.0.7",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.3.0"
-  },
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.15.2",
@@ -70,6 +35,40 @@
     "vue": "^2.6.11",
     "vue-cli-plugin-vuetify-preset-basil": "^1.0.4",
     "vue-router": "^3.2.0",
-    "vuetify": "^2.2.11"
+    "vuetify": "^2.5.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.14",
+    "@vue/cli-plugin-eslint": "^4.5.14",
+    "@vue/cli-plugin-router": "^4.5.8",
+    "@vue/cli-service": "~4.5.14",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "babel": "^6.23.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-import": "^2.20.2",
+    "prettier-eslint": "^8.2.2",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "~2.4.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/wrench13/node-photobooth/issues"
+  },
+  "homepage": "https://github.com/wrench13/node-photobooth",
+  "keywords": [
+    "node",
+    "photobooth",
+    "raspberrypi",
+    "rpi"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrench13/node-photobooth.git"
   }
 }

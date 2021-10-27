@@ -57,12 +57,12 @@ const options = {
 };
 const camera = RaspiCam(options);
 const keypress = require('keypress');
-const randomPics = require('./utils/randompics');
+const randomPics = require('./utils/randompics.js');
 
-function takePic(counter) {
-  console.log(`takepic ${counter}`);
-  outputPath = `${photobooth.path}pic${counter}.jpg`;
-  input.push(`pic${counter}.jpg`);
+function takePic(count) {
+  console.log(`takepic ${count}`);
+  outputPath = `${photobooth.path}pic${count}.jpg`;
+  input.push(`pic${count}.jpg`);
   camera.set('output', outputPath);
   socket.emit('timer', photobooth.timer);
   return camera.start();
@@ -74,11 +74,11 @@ console.log('keypress return');
 
 // listen for the 'keypress' event
 process.stdin.on('keypress', (ch, key) => {
-  if (key && key.ctrl && key.name === 'c') {
+  if (key && key.ctrl && key.name == 'c') {
     console.log('goodbye !');
     process.exit();
   }
-  if (key.name === 'return') {
+  if (key.name == 'return') {
     console.log('keypress return');
     if (pressed === false) {
       pressed = true;

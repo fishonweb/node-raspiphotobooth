@@ -1,5 +1,8 @@
 const express = require('express');
 
+const dbParams = levelup(leveldown('./params'));
+const dbPictures = levelup(leveldown('./picsdb'));
+
 const app = express();
 const bodyParser = require('body-parser');
 const http = require('http').createServer(app);
@@ -7,8 +10,6 @@ const io = require('socket.io')(http);
 const levelup = require('levelup');
 const leveldown = require('leveldown');
 
-const dbParams = levelup(leveldown('./params'));
-const dbPictures = levelup(leveldown('./picsdb'));
 
 app.use(express.json());
 app.use(bodyParser.json());
